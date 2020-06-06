@@ -24,13 +24,13 @@ void bill(saleitem *a)
 	cout<<"---------------------------------"<<endl;
 	cout<<setw(6)<<a[0].name<<setw(6)<<a[0].count<<setw(10)<<a[0].price<<setw(10)<<a[0].count*a[0].price<<endl;
 	cout<<setw(6)<<a[1].name<<setw(6)<<a[1].count<<setw(10)<<a[1].price<<setw(10)<<a[1].count*a[1].price<<endl;
-    cout<<setw(6)<<a[2].name<<setw(6)<<a[2].count<<setw(10)<<a[2].price<<setw(10)<<a[2].count*a[2].price<<endl;
+        cout<<setw(6)<<a[2].name<<setw(6)<<a[2].count<<setw(10)<<a[2].price<<setw(10)<<a[2].count*a[2].price<<endl;
 }
 void main()
 {
 	saleitem a[3];
 	strcpy(a[0].name,"可口可乐");
-    strcpy(a[1].name,"九制话梅");
+        strcpy(a[1].name,"九制话梅");
 	strcpy(a[2].name,"鱼皮花生");
 	a[0].count=0; a[0].price=3.5;
 	a[1].count=0; a[1].price=2; 
@@ -54,7 +54,7 @@ void main()
 		}
 	
 	cout<<"------------------------------------------"<<endl;
-    cout<<"请拿好你的账单:"<<endl;
+        cout<<"请拿好你的账单:"<<endl;
 	bill(a);
 	}
     cout<<"欢迎下次光临"<<endl;
