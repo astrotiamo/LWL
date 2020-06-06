@@ -1,0 +1,58 @@
+#include "pch.h"
+#include<iostream>
+#include<iomanip>
+#include<string.h>
+using namespace std;
+struct student
+{
+	int num;
+	char name[10];
+	int score;
+};
+//请在下方给出search函数形式一的实现代码
+int search(int num)
+{
+	student stu[5] = { {101,"Tom",88},{102,"Marry",98},{103,"John",60},{104,"Kitty",78},{105,"Betty",90} };
+	for (int i = 0; i < 5; i++)
+	{
+		if (stu[i].num == num)
+		{
+			cout << setw(5) << stu[i].num << setw(10) << stu[i].name << setw(5) << stu[i].score << endl;
+		}
+	}
+	return 0;
+}
+
+//请在下方给出search函数形式二的实现代码
+char search(char name[10])
+{
+	student stu[5] = { {101,"Tom",88},{102,"Marry",98},{103,"John",60},{104,"Kitty",78},{105,"Betty",90} };
+	for (int i = 0; i < 5; i++)
+	{
+		if (strcmp(stu[i].name,name)==0)
+		{
+			cout << setw(5) << stu[i].num << setw(10) << stu[i].name << setw(5) << stu[i].score << endl;
+		}
+	}
+	return 0;
+}
+
+void main()
+{
+	student stu[5] = { {101,"Tom",88},{102,"Marry",98},{103,"John",60},{104,"Kitty",78},{105,"Betty",90} };
+	int num;
+	char name[10];
+	for (int i = 0; i < 5; i++)
+	{
+		cout << setw(5) << stu[i].num << setw(10) << stu[i].name << setw(5) << stu[i].score << endl;
+	}
+	cout << "请输入要查找的学生的学号" << endl;
+	cin >> num;
+	//请在下方调用search函数形式一
+	search(num);
+
+	cout << "请输入要查找的学生的姓名" << endl;
+	cin >> name;
+	//请在下方调用search函数形式二
+	search(name);
+}
