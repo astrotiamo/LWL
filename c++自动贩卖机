@@ -41,21 +41,20 @@ void main()
 	cin>>choise;
 	if (choise==4)
 	{
-		cout<<"请输入商品编号和数量"<<endl;
-		cout<<"商品编号:";
-		cin>>number;
-		while(number!=0)
-		{
-			cout<<"购买数量:";
-			cin>>count;
-			a[number-1].count=a[number-1].count+count;
-			cout<<"商品编号:";
-		    cin>>number;
-		}
-	
-	cout<<"------------------------------------------"<<endl;
-        cout<<"请拿好你的账单:"<<endl;
-	bill(a);
+	       cout<<"请输入商品编号和数量"<<endl;
+	       cout<<"商品编号:";
+	       cin>>number;
+	       while(number!=0)
+	       {
+		      cout<<"购买数量:";
+		      cin>>count;
+		      a[number-1].count=a[number-1].count+count;
+		      cout<<"商品编号:";
+		      cin>>number;
+	        }	
+	        cout<<"------------------------------------------"<<endl;
+                cout<<"请拿好你的账单:"<<endl;
+	        bill(a);
 	}
-    cout<<"欢迎下次光临"<<endl;
+        cout<<"欢迎下次光临"<<endl;
 }
