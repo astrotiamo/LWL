@@ -1,0 +1,61 @@
+#include<iomanip.h>
+#include<stdlib.h>
+#include<string.h>
+struct saleitem
+{
+	char name[10];
+	double price;
+	int count;
+};
+void menu()
+{
+	cout<<"欢迎使用自动贩卖机"<<endl;
+	cout<<"------------------------------------------"<<endl;
+	cout<<"1:可口可乐  3.5元/罐"<<endl;
+	cout<<"2:九制话梅  2元/包"<<endl;
+	cout<<"3:鱼皮花生  1.5元/包"<<endl;
+	cout<<"提示：请用编号表示要购买的商品"<<endl;
+	cout<<"请输入4开始购买，输入商品号为0表示购买结束"<<endl;
+	cout<<"------------------------------------------"<<endl;
+}
+void bill(saleitem *a)
+{
+	cout<<"商品      "<<"数量      "<<"单价      "<<"小计      "<<endl;
+	cout<<"---------------------------------"<<endl;
+	cout<<setw(6)<<a[0].name<<setw(6)<<a[0].count<<setw(10)<<a[0].price<<setw(10)<<a[0].count*a[0].price<<endl;
+	cout<<setw(6)<<a[1].name<<setw(6)<<a[1].count<<setw(10)<<a[1].price<<setw(10)<<a[1].count*a[1].price<<endl;
+    cout<<setw(6)<<a[2].name<<setw(6)<<a[2].count<<setw(10)<<a[2].price<<setw(10)<<a[2].count*a[2].price<<endl;
+}
+void main()
+{
+	saleitem a[3];
+	strcpy(a[0].name,"可口可乐");
+    strcpy(a[1].name,"九制话梅");
+	strcpy(a[2].name,"鱼皮花生");
+	a[0].count=0; a[0].price=3.5;
+	a[1].count=0; a[1].price=2; 
+	a[2].count=0; a[2].price=1.5;
+	menu();
+	int choise,number,count;
+	cout<<"请选择:";
+	cin>>choise;
+	if (choise==4)
+	{
+		cout<<"请输入商品编号和数量"<<endl;
+		cout<<"商品编号:";
+		cin>>number;
+		while(number!=0)
+		{
+			cout<<"购买数量:";
+			cin>>count;
+			a[number-1].count=a[number-1].count+count;
+			cout<<"商品编号:";
+		    cin>>number;
+		}
+	
+	cout<<"------------------------------------------"<<endl;
+    cout<<"请拿好你的账单:"<<endl;
+	bill(a);
+	}
+    cout<<"欢迎下次光临"<<endl;
+}
