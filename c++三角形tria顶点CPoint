@@ -1,0 +1,59 @@
+#include "pch.h"
+#include<iostream>
+#include<iomanip>
+#include <math.h>
+using namespace std;
+class CPoint
+{
+private:
+	double x, y;
+public:
+	CPoint()
+	{
+		x = 0; y = 0;
+	}
+	CPoint(double x, double y)
+	{
+		this->x = x; this->y = y;
+	}
+	double getX()
+	{
+		return x;
+	}
+	double getY()
+	{
+		return y;
+	}
+};
+class tria
+{
+private:
+	double len; double s; double Area; double a, b, c;
+	CPoint p1, p2, p3;
+public:
+	tria(CPoint a1,CPoint a2,CPoint a3)
+	{
+		p1 = a1; p2 = a2; p3 = a3;
+	}
+	double getlen(CPoint A, CPoint B)
+	{
+		len = sqrt((A.getX() - B.getX())*(A.getX() - B.getX()) + (A.getY() - B.getY())*(A.getY() - B.getY()));
+		return len;
+	}
+	double getArea()
+	{
+		a = getlen(p2, p3);
+		b = getlen(p1, p3);
+		c = getlen(p1, p2);
+		s = (a + b + c) / 2;
+		Area = sqrt(s*(s - a)*(s - b)*(s - c));
+		return Area;
+	}
+};
+int main()
+{
+	CPoint A(0,0), B(3,0), C(0,3);
+	tria t1(A,B,C);
+	cout << t1.getArea();
+	return 0;
+}
