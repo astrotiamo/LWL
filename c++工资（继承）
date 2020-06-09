@@ -1,0 +1,150 @@
+#include <iostream>
+#include <string>
+#include <conio.h>
+using namespace std;
+//基类：员工类
+class Employee
+{
+protected:
+	int id;
+	string name;
+	double salary;
+public:
+	void initEmp(int ID, const string &n, double s = 0)
+	{
+		id = ID;
+		name = n;
+		salary = s;
+	}
+	void print()
+	{
+		cout << "编号：" << id << endl;
+		cout << "姓名：" << name << endl;
+	}
+};
+
+//派生类：销售员
+class CEmp :public Employee
+{
+protected:
+	double sales;
+	static double per;
+public:
+	void initCEmp(int ID, const string &n, double s)
+	{
+		initEmp(ID, n);
+		sales = s;
+	}
+	void calsalary()
+	{
+		salary = sales * per;
+	}
+	void print()
+	{
+		calsalary();
+		Employee::print();
+		cout << "销售额：" << sales << endl;
+		cout << "销售提成比例：" << per << endl;
+		cout << "工资：" << salary << endl;
+		cout << "--------------" << endl;
+	}
+};
+double CEmp::per = 0.3;
+//派生类：带薪销售员
+class BCEmp :public CEmp
+{
+private:
+	double basepay;
+public:
+	void initBCEmp(int ID, const string &n, double s, double bpay)
+	{
+		initCEmp(ID, n, s);
+		basepay = bpay;
+	}
+	void calsalary()
+	{
+		salary = basepay + sales * per;
+	}
+	void print()
+	{
+		calsalary();
+		Employee::print();
+		cout << "底薪：" << basepay << endl;
+		cout << "销售额：" << sales << endl;
+		cout << "销售提成比例：" << per << endl;
+		cout << "工资：" << salary << endl;
+		cout << "--------------" << endl;
+	}
+};
+class SEmp :public CEmp
+{
+private:
+	double workingtime;
+	double op;
+	double hw;
+public:
+	void initSEmp(int ID, const string &n, double t,double bpay,double HW)
+	{
+		initCEmp(ID, n,t);
+		workingtime = t;
+		op = bpay;
+		hw = HW;
+	}
+	void calsalary()
+	{
+		salary = op + workingtime * hw;
+	}
+	void print()
+	{
+		calsalary();
+		Employee::print();
+		cout << "工作小时数：" << workingtime << endl;
+		cout << "每小时薪酬：" << hw << endl;
+		cout << "加班费：" << op << endl;
+		cout << "工资：" << salary << endl;
+		cout << "--------------" << endl;
+	}
+};
+class HEmp:public Employee
+{
+private:
+	double ww;
+	double week;
+public:
+	void initHEmp(int ID, const string &n, double WW, double WEEK)
+	{
+		initEmp(ID,n);
+		ww = WW;
+		week = WEEK;
+	}
+	void calsalary()
+	{
+		salary = ww * week;
+	}
+	void print()
+	{
+		calsalary();
+		Employee::print();
+		cout << "工作周数：" << week << endl;
+		cout << "周薪：" << ww << endl;
+		cout << "工薪：" << salary << endl;
+		cout << "--------------" << endl;
+	}
+};
+
+
+int main()
+{
+	CEmp e1;
+	e1.initCEmp(1, "Tom", 10000);
+	e1.print();
+	BCEmp e2;
+	e2.initBCEmp(2, "Kitty", 20000, 5000);
+	e2.print();
+	SEmp e3;
+	e3.initSEmp(3, "Jack", 48, 5000, 50);
+	e3.print();
+	HEmp e4;
+	e4.initHEmp(4, "Carry", 2000, 3);
+	e4.print();
+}
