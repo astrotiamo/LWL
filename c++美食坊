@@ -1,0 +1,99 @@
+#include "pch.h"
+#include <iostream>
+#include<string.h>
+using namespace std;
+
+class CMenuitem
+{
+public:
+	CMenuitem()
+	{
+		m_id = 1999001;
+		m_dishname = "default";
+		m_price = 0.00;
+		m_isproved = "否";
+	}
+	CMenuitem(int id, char *dishname, double price, char *isproved)
+	{
+		m_id = id;
+		m_dishname = dishname;
+		m_price = price;
+		m_isproved = isproved;
+	}
+	void setid(int id)
+	{
+		m_id = id;
+	}
+	void setdishname(char *dishname)
+	{
+		m_dishname = dishname;
+	}
+	void setprice(double price)
+	{
+		m_price = price;
+	}
+	void setisproved(char *isproved)
+	{
+		m_isproved = isproved;
+	}
+	int getid()
+	{
+		return m_id;
+	}
+	char *getdishname()
+	{
+		return m_dishname;
+	}
+	double getprice()
+	{
+		return m_price;
+	}
+	char *getisproved()
+	{
+		return m_isproved;
+	}
+private:
+	int m_id; char *m_dishname;
+	double m_price; char *m_isproved;
+};
+int main()
+{
+	CMenuitem d1,d2,d3[2],d4[2];
+	d1.setid(2018001);
+	d1.setdishname("炸薯条");
+	d1.setprice(3.00);
+	d1.setisproved("是");
+	d2.setid(2018002);
+	d2.setdishname("麻辣青瓜");
+	d2.setprice(5.00);
+	d2.setisproved("是");
+	d3[0].setid(2018003);
+	d3[0].setdishname("奶油西多士");
+	d3[0].setprice(5.00);
+	d3[0].setisproved("是");
+	d3[1].setid(2018004);
+	d3[1].setdishname("黄金西多士");
+	d3[1].setprice(5.00);
+	d3[1].setisproved("是");
+	for(int i=0;i<2;i++)
+  {
+     cout<<”请依次输入编号，菜名，价格，是否供应：”;
+     Cin>>num>>name>>p>>f;
+     d4[i].setId(num);
+     d4[i].setdishName(name);
+     d4[i].setPrice(p);
+     d4[i].setProvided(f);
+  }
+	cout << "编号      " << "名称      " << "单价      " << "是否供应    " << endl;
+	cout << d1.getid() << "   " << d1.getdishname() << "    " << d1.getprice() << "         " << d1.getisproved()<< endl;
+	cout << d2.getid() << "   " << d2.getdishname() << "  " << d2.getprice() << "         " << d2.getisproved()<< endl;
+	for(int i=0;i<2;i++)
+  {
+     cout << d3[i].getid() << "   " << d3[i].getdishname() << "" << d3[i].getprice() << "         " << d3[i].getisproved()<< endl;
+  }
+	for(int n=0;n<2;n++)
+  {
+     cout << d4[n].getid() << "   " << d4[n].getdishname() << "" << d4[n].getprice() << "         " << d4[n].getisproved()<< endl;
+  }
+	return 0;
+}
