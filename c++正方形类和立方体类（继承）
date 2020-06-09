@@ -1,0 +1,129 @@
+#include"pch.h"
+#include<iostream>
+using namespace std;
+class Point
+{
+public:
+	Point(double, double, double);
+	Point()
+	{};
+	void setX(double);
+	double getX() const;
+	void setY(double);
+	double getY() const;
+	void setZ(double);
+	double getZ() const;
+	void print() const;
+private:
+	double x, y, z;
+};
+Point::Point(double xValue, double yValue, double zValue)
+	: x(xValue), y(yValue), z(zValue)
+{}
+void Point::setX(double xValue)
+{
+	x = xValue;
+}
+double Point::getX() const
+{
+	return x;
+}
+void Point::setY(double yValue)
+{
+	y = yValue;
+}
+double Point::getY() const
+{
+	return y;
+}
+void Point::setZ(double zValue)
+{
+	z = zValue;
+}
+double Point::getZ() const
+{
+	return z;
+}
+void Point::print() const
+{
+	printf("\nThe point is: [%.2f,%.2f,%.2f]", x, y, z);
+}  //获取左下角坐标
+
+class Square :public Point
+{
+private:
+	int length;
+	int area;
+	double x, y, z;
+public:
+	Square()
+	{
+
+	}
+	void setxyz(double xValue, double yValue, double zValue)
+	{
+		setX(xValue);
+		setY(yValue);
+		setZ(zValue);
+		print();
+		cout << endl;
+	}
+	void setside(int i)
+	{
+		length = i;
+		cout << length;
+	}
+	int getarea()
+	{
+		area = length * length;
+		cout << area;
+		return area;
+	}
+};
+class Cube :public Square
+{
+private:
+	int len;
+	int sarea;
+	int varea;
+public:
+	Cube()
+  {}	
+	void setside(int l)
+	{
+		len = l;
+		cout << len;
+	}
+	int getsarea()
+	{
+		sarea = len * len * 6;
+		cout << sarea;
+		return sarea;
+	}
+	int getvarea()
+	{
+		varea = len * len * len;
+		cout << varea;
+		return varea;
+	}
+};
+int main()
+{
+	Square p1;
+	p1.setxyz(7.90,12.50,8.80);
+	cout << "The square side is";
+	p1.setside(5);
+	cout << endl;
+	cout << "The area of the square is :";
+	p1.getarea();
+	Cube s1;
+	s1.setxyz(0.50, 8.30, 12.00);
+	cout << "The cube side is :";
+	s1.setside(2);
+	cout << endl;
+	cout << "The surface area of the cube is :";
+	s1.getsarea();
+	cout << endl;
+	cout << "The volume of the cube is :";
+	s1.getvarea();
+}
