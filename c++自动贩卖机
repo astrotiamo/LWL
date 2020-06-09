@@ -42,8 +42,8 @@ void main()
 	if (choise==4)
 	{
 	       cout<<"请输入商品编号和数量"<<endl;
-	       cout<<"商品编号:";
 	       cin>>number;
+	       cout<<"商品编号:";       
 	       while(number!=0)
 	       {
 		      cout<<"购买数量:";
