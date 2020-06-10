@@ -1,0 +1,76 @@
+//新增记录图标文件位置的属性，新增事件dbclick
+#include"pch.h"
+#include<iostream>
+#include<string>
+using namespace std;
+
+class button
+{
+public:
+	button()
+	{
+	}
+	button(string id, int x = 0, int y = 0, string t = "button")
+	{
+		this->id = id;
+		this->x = x;
+		this->y = y;  //位置
+		this->text = t;  //按钮名称
+	}
+	string event()
+	{
+		return "click";
+	}
+	void printinfo()
+	{
+		cout << "ID:" << id << endl;
+		cout << "位置：" << x << "，" << y << endl;
+		cout << "文本:" << text << endl;
+		cout << "事件:" << event() << endl;
+	}
+protected:
+	string id;//ID号
+	int x, y;//坐标
+	string text;//按钮文字
+};
+
+class bmpbutton :public button
+{
+public:
+	bmpbutton(string id,string ex, int x = 0, int y = 0, string t1 = "bmbbutton1")
+	{
+		this->id = id;
+		this->x = x;
+		this->y = y;
+		exam = ex;  //图标位置
+		this->text = t1;
+	}
+	string event()
+	{
+		return "click";
+	}
+	string event1()
+	{
+		return "dbclick";
+	}
+	void printinfo()
+	{
+		cout << "ID:" << id << endl;
+		cout << "位置：" << x << "，" << y << endl;
+		cout << "文本:" << text << endl;
+		cout << "事件:" << event() << endl;
+		cout << "图标位置" << exam << endl;
+		cout << "新增事件：" << event1() << endl;
+	}
+private:
+	string exam;
+};
+int main()
+{
+	button b1("button1", 100, 200, "确定");
+	b1.printinfo();
+	cout << endl;
+	bmpbutton b2("bmpbutton1", "c:\\1.bmp", 200, 300, "取消");
+	b2.printinfo();
+	return 0;
+}
