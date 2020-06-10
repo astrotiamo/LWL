@@ -1,0 +1,105 @@
+/*由person派生出领导类leader，包含职务和部门等数据成员以及相关的成员函数。
+再由person派生出工程师类engineer，包含职称和专业等数据成员以及相关的成员函数。
+然后由1eader和engineer类派生出主任工程师类chairman。*/
+#include"pch.h"
+#include<iostream>
+#include<string>
+using namespace std;
+class person
+{
+public:
+	person()
+	{
+	}
+	person(string n, int a) :name(n), age(a)
+	{
+	}
+	void print()
+	{
+		cout << "姓名:" << name << endl;
+		cout << "年龄:" << age << "岁" << endl;
+	}
+protected:
+	string name;
+	int age;
+};
+
+class leader :virtual public person
+{
+public:
+	leader()
+	{
+	}
+	leader(string n, int a, string unit, string job1) :person(n, a)
+	{
+		UNIT = unit;
+		JOB1 = job1;
+	}
+	void print()
+	{
+		cout << "姓名:" << name << endl;
+		cout << "年龄:" << age << "岁" << endl;
+		cout << "部门及职务：" << UNIT << JOB1 << endl;
+	}
+protected:
+	string UNIT;
+	string JOB1;
+};
+
+class engineer :virtual public person
+{
+public:
+	engineer()
+	{
+	}
+	engineer(string n, int a, string sp, string job2) :person(n, a)
+	{
+		SP = sp;
+		JOB2 = job2;
+	}
+	void print()
+	{
+		cout << "姓名:" << name << endl;
+		cout << "年龄:" << age << "岁" << endl;
+		cout << "专业及职称：" << SP << JOB2 << endl;
+	}
+protected:
+	string SP;
+	string JOB2;
+};
+
+class chairman :public leader, public engineer
+{
+public:
+	chairman(string n, int a, string unit, string job1, string sp, string job2) :person(n,a)
+	{
+		UNIT = unit;
+		JOB1 = job1;
+		SP = sp;
+		JOB2 = job2;
+	}
+	void print()
+	{
+		cout << "姓名:" << name << endl;
+		cout << "年龄:" << age << "岁" << endl;
+		cout << "部门及职务：" << UNIT << JOB1 << endl;
+		cout << "专业及职称：" << SP << JOB2 << endl;
+	}
+};
+int main()
+{
+	leader a1("李明", 42, "设计处", "处长");
+	cout << "Leader类对象：" << endl;
+	a1.print();
+	cout << endl;
+
+	engineer a2("张三", 30, "电站锅炉设计专业", "高级工程师");
+	cout << "engineer类对象：" << endl;
+	a2.print();
+	cout << endl;
+
+	chairman a3("李四", 50, "设计处", "处长", "电站锅炉设计专业", "高级工程师");
+	cout << "chairman类对象：" << endl;
+	a3.print();
+	return 0;
+}
